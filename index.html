@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 - Website Building</title>
+    <script src="https://kit.fontawesome.com/228ecfebca.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        #login-container {
+            width: 460px;
+            margin: 0 auto;
+        }
+
+        form label,
+        form input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form input {
+            padding: 8px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form div {
+            margin: 16px 0px;
+        }
+
+        #login-container i {
+            position: absolute;
+        }
+
+        .icon {
+            margin-left: -40px;
+            padding: 10px;
+            color: rgb(56, 216, 128);
+            width: 70px;
+            text-align: inherit;
+        }
+
+        .xicon {
+            margin-left: -40px;
+            padding: 10px;
+            color: #d83838;
+            width: 70px;
+            text-align: inherit;
+        }
+
+        .tacno {
+            border-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login-container">
+
+        <form class="my-form">
+            <div class="user">
+                <label for="username">Username:</label>
+                <input id="username" type="text">
+
+            </div>
+
+            <div class="pasword">
+                <label for="password">Password:</label>
+                <input id="password" type="password">
+
+            </div>
+
+            <input type="submit" value="Login">
+        </form>
+
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+
+        $("#login-container").submit(function (e) {
+            e.preventDefault();
+            let user1 = "user_name";
+            let password1 = "123456789";
+
+            if (($("#username").val() === user1) && ($("#password").val() === password1)) {
+                $(".my-form").append('<p>Successful login!</p>,');
+                $(".user").append('<i class="fas fa-check icon"></i>');
+                $(".pasword").append('<i class="fas fa-check icon"></i>');
+                $("#password").addClass("tacno");
+                $("#username").addClass("tacno");
+            } else if ($("#username").val() === '') {
+                $(".my-form").append('<p>Please enter user name!</p>');
+                $("#username").addClass("netacno");
+                $(".user").append('<i class="fas fa-times xicon"></i>');
+            } else if ($("#username").val() !== user1) {
+                $(".my-form").append('<p>Please enter valid user name!</p>');
+                $("#username").addClass("netacno");
+                $(".user").append('<i class="fas fa-times xicon"></i>');
+            }
+            else if ($('#password').val() === '') {
+                $(".my-form").append('<p>Please enter password!</p>');
+                $(".pasword").append('<i class="fas fa-times xicon"></i>');
+                $("#password").addClass("netacno");
+                $(".user").append('<i class="fas fa-check icon"></i>');
+                $("#username").addClass("tacno");
+            } else if ($('#password').val() !== password1) {
+                $(".my-form").append('<p>Please enter valid password!</p>');
+                $("#password").addClass("netacno");
+                $(".pasword").append('<i class="fas fa-times xicon"></i>');
+                $("#username").addClass("tacno");
+                $(".user").append('<i class="fas fa-check icon"></i>');
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
